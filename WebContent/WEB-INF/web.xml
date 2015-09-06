@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app id="WebApp_ID" version="2.4"
+	xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+
+	<!-- Description -->
+	<display-name>== ssh == feng's client gateway ==</display-name>
+	<description>ssh frameworks service</description>
+
+	<!-- System Listener  -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/classes/mvc/application-context.xml</param-value>
+	</context-param>
+		
+	<!-- Servlet  -->
+	<servlet>
+		<servlet-name>GalaxyFacade</servlet-name>
+		<servlet-class>com.feng.ssh.web.ClientFacadeServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>GalaxyFacade</servlet-name>
+		<url-pattern>/mbclient</url-pattern>
+	</servlet-mapping>
+	
+	<!-- Default Pages -->
+	<welcome-file-list>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+
+	<!-- SESSION -->
+	<session-config>
+		<session-timeout>15</session-timeout>
+	</session-config>
+
+</web-app>
