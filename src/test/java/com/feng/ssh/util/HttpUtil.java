@@ -1,4 +1,4 @@
-package com.feng.ssh.test;
+package com.feng.ssh.util;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

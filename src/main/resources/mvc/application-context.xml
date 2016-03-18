@@ -11,29 +11,17 @@
 
 	<import resource="spring-service.xml" />
 
-	<!-- 启动标注 -->
-	<context:annotation-config />
-	<context:component-scan base-package="com.feng.ssh." />
-	<context:component-scan base-package="com.feng.ssh.service" />
-
-	<!-- dbcp数据源 -->
-	<bean name="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
-		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
-		<property name="url"
-			value="jdbc:mysql://182.92.170.253:3306/wristball?useUnicode=true&amp;zeroDateTimeBehavior=convertToNull&amp;characterEncoding=UTF-8"></property>
-		<property name="username" value="judon"></property>
-		<property name="password" value="titps4gg"></property>
-	</bean>
-
-	<!-- Hibernate的配置 在hibernate.cfg.xml当中 -->
+	<!-- 启动注解自动注入的情况 -->
+	<!-- <context:annotation-config />
+	<context:component-scan base-package="com.feng.ssh.hibernate,com.feng.ssh.service" /> -->
 
 	<!-- 配置dataSource选用c3p0方式 -->
 	<bean id="hibernateDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
 		<property name="driverClass" value="com.mysql.jdbc.Driver" />
 		<property name="jdbcUrl"
-			value="jdbc:mysql://182.92.170.253:3306/wristball?useUnicode=true&amp;characterEncoding=UTF-8" />
-		<property name="user" value="judon" />
-		<property name="password" value="titps4gg" />
+			value="jdbc:mysql://localhost:3306/mydatabase?useUnicode=true&amp;characterEncoding=UTF-8" />
+		<property name="user" value="root" />
+		<property name="password" value="123456" />
 		<property name="minPoolSize" value="2" />
 		<property name="maxPoolSize" value="20" />
 		<property name="initialPoolSize" value="2" />
@@ -42,15 +30,22 @@
 	</bean>
 
 	<!-- 配置sessionFactory -->
-	<!--<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean"> -->
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
 		<property name="dataSource" ref="hibernateDataSource" />
-		<property name="mappingResources">
+		<!-- ***.hbm.xml形式配置 -->
+		<!-- <property name="mappingResources">
 			<list>
-			<!-- 此处添加数据库的映射关系.hbm.xml文件  -->
-			<!-- Example -->
-			<!-- <value>(文件的路径)domain/Test.hbm.xml</value> -->
+			此处添加数据库的映射关系.hbm.xml文件 
+			Example
+			<value>(文件的路径)domain/Test.hbm.xml</value>
+			<value>domain/Test.hbm.xml</value>
+			</list>
+		</property> -->
+		<!-- 以注解形式配置 -->
+		<property name="mappingDirectoryLocations">
+			<list>
+				<value>classpath:com/feng/ssh/pojo</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
@@ -62,11 +57,6 @@
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLInnoDBDialect</prop>
 			</props>
 		</property>
-	</bean>
-
-	<!-- 配置hibernateTemplate -->
-	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
-		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 
 	<!-- 声明式事务 -->

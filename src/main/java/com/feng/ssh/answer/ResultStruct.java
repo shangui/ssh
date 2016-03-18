@@ -1,4 +1,4 @@
-package com.feng.ssh.answer.base;
+package com.feng.ssh.answer;
 
 /** 定义给客户端的返回结构,之后再抽象接口 */
 public class ResultStruct {

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.feng.ssh.answer.base;
+package com.feng.ssh.answer;
 
 import java.io.IOException;
 import java.io.OutputStream;

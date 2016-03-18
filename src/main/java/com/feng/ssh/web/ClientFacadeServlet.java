@@ -17,13 +17,13 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.feng.ssh.answer.base.Answer;
+import com.feng.ssh.answer.Answer;
 import com.feng.ssh.service.base.Service;
 import com.feng.ssh.service.base.ServiceFactory;
 import com.feng.ssh.util.RequestInfoUtil;
 
 /**
- * 来自客户端的请求入口均为 localhost:8080/supernove/mbclient
+ * 来自客户端的请求入口均为 localhost:8080/ssh/mbclient
  * 
  * @author feng
  *
@@ -59,9 +59,9 @@ public class ClientFacadeServlet extends HttpServlet {
 		Map<String, Object> requestInfoMap = RequestInfoUtil
 				.extractRequest(req);
 		if (requestInfoMap == null) {
-			log.error("paramsmap == null");
+			log.error("params map = null");
 		} else {
-			log.info("params map.size() == " + requestInfoMap.size());
+			log.info("params map.size() = " + requestInfoMap.size());
 		}
 
 		// 从客户端上传参数中解析出params对应的JSON字符串
@@ -69,6 +69,7 @@ public class ClientFacadeServlet extends HttpServlet {
 				.extractParamsMap(requestInfoMap);
 		// 更加详细的客户端信息用作数据挖掘
 
+		// 如果Attribute找不到参数，则说明在Parameter里
 		if (clientParams == null) {
 			clientParams = requestInfoMap;
 		}

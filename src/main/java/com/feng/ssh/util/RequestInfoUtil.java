@@ -20,7 +20,7 @@ import org.apache.commons.logging.LogFactory;
 import com.alibaba.fastjson.JSONObject;
 
 /**
- * @author shengl 用来解析所有的request请求参数 REQUEST参数详解 <br>
+ * @author 用来解析所有的request请求参数 REQUEST参数详解 <br>
  *         getAttribute(String name)：返回由name指定的属性值<br>
  *         getAttributeNames()：返回request对象所有属性的名字集合，结果是一个枚举的实例<br>
  *         getCharacterEncoding()：返回请求中的字符编码方式 <br>
@@ -267,9 +267,8 @@ public class RequestInfoUtil {
 				String name = (String) paramNames.nextElement();
 
 				Object paramValue = request.getParameter(name);
-				log.info("xml文件为" + name + "=" + paramValue);
+				log.info("JsonString ： " + name + "=" + paramValue);
 				requestInfoMap.put(name, paramValue);
-				requestInfoMap.put("params=", name + "=" + paramValue);
 			}
 			log.info("extract params closing while paramsMap = "
 					+ requestInfoMap.toString());

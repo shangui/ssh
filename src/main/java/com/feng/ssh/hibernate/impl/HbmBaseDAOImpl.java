@@ -9,7 +9,6 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import com.feng.ssh.hibernate.HbmBaseDAO;
 
@@ -32,7 +31,6 @@ public class HbmBaseDAOImpl implements HbmBaseDAO {
 		return sessionFactory;
 	}
 
-	@Autowired
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}

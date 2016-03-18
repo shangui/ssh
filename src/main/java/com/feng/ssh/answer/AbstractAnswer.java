@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.feng.ssh.answer.base;
+package com.feng.ssh.answer;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -21,14 +21,9 @@ public class AbstractAnswer implements Answer {
 
 	protected ResultStruct result;
 
-	/* 返回值为简单的标识结果的方法 */
-	public void setListAnswer(Object answerlist, String info) {
-		result = new ResultStruct(200, info, answerlist);
-	}
-
-	/* 返回值为键值对List的方法 */
-	public void setSimpleAnswer(String data, String info) {
-		result = new ResultStruct(200, info, data);
+	/* 程序正常返回时的返回方法 */
+	public void setFineAnswer(Object answer, String info) {
+		result = new ResultStruct(200, info, answer);
 	}
 
 	/* 当程序遇到违例的时候的返回方法 */

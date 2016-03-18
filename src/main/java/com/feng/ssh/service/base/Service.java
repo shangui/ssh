@@ -2,7 +2,7 @@ package com.feng.ssh.service.base;
 
 import java.util.Map;
 
-import com.feng.ssh.answer.base.Answer;
+import com.feng.ssh.answer.Answer;
 
 /* 后续再拆分Model层 */
 public interface Service {

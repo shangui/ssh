@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.feng.ssh.pojo.User"
+		table="User">
+		<!-- /*主键映射*/ -->
+		<id name="DataId" type="integer">
+			<column name="DataId" />
+			<generator class="identity" />
+		</id>
+		<!-- /*其他字段映射*/ -->
+		<property name="UserName" type="java.lang.String">
+			<column name="UserName" />
+		</property>
+		<property name="Phone" type="java.lang.String">
+			<column name="Phone" />
+		</property>
+		<property name="Password" type="java.lang.String">
+			<column name="Password" />
+		</property>
+	</class>
+</hibernate-mapping>
